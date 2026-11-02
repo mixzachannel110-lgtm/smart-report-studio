@@ -46,7 +46,9 @@
 dialog.wide-modal{width:calc(100vw - 60px);max-width:1400px;height:calc(100vh - 50px);padding:20px}.reference-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:15px}.reference-heading p{margin-bottom:15px}.reference-layout{display:grid;grid-template-columns:220px 1fr;height:calc(100% - 90px);gap:15px}.reference-pages{overflow:auto;display:flex;flex-direction:column;gap:5px}.reference-pages button{text-align:left;justify-content:flex-start;font-size:10px;min-height:34px;flex-shrink:0}.reference-layout object{width:100%;height:100%;border:1px solid var(--line);background:#e5e8eb}
 @media(max-width:700px){dialog.wide-modal{width:calc(100vw - 16px);height:calc(100vh - 20px);padding:12px}.reference-layout{grid-template-columns:1fr;height:calc(100% - 125px)}.reference-pages{flex-direction:row;max-height:45px;overflow:auto}.reference-pages button{white-space:nowrap}.reference-layout object{min-height:400px}.reference-heading h2{font-size:13px}}
 @media print{
-@page{size:Letter;margin:0}
-.print-area .paper.classic-paper{width:215.9mm;max-width:none;height:279.4mm;min-height:279.4mm;aspect-ratio:612/792;padding:0;overflow:hidden;page-break-after:always;break-after:page}
+@page{size:Letter portrait;margin:0}
+@page landscape-page{size:Letter landscape;margin:0}
+.print-area .paper.classic-paper{width:215.9mm;max-width:none;height:279.4mm;min-height:279.4mm;aspect-ratio:612/792;padding:0;overflow:hidden;page-break-after:always;break-after:page;break-inside:avoid;page-break-inside:avoid}
+.print-area .paper.classic-paper.landscape{width:279.4mm;height:215.9mm;min-height:215.9mm;aspect-ratio:792/612;page:landscape-page}
 .print-area .paper.classic-paper:last-child{page-break-after:auto;break-after:auto}
 }
