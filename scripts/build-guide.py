@@ -27,6 +27,12 @@ for line in source.splitlines():
         continue
     if line=='<!-- TEMPLATE_COVERS -->':
         parts.append('<div class="covers"><figure><img src="assets/templates/pm151/original-cover.png" alt="ปกต้นฉบับครัวการบิน"><figcaption>ต้นฉบับ PM.FP.69-151 · 56 หน้า</figcaption></figure><figure><img src="assets/templates/pt095/original-cover.png" alt="ปกต้นฉบับ AGC"><figcaption>ต้นฉบับ PM.FP.69-095 · 44 หน้า</figcaption></figure></div>');continue
+    img_match=re.match(r'^!\[(.*?)\]\((.*?)\)$', line.strip())
+    if img_match:
+        flush();close_list()
+        cap, src = img_match.group(1), img_match.group(2)
+        parts.append(f'<figure style="margin:22px 0;text-align:center"><img src="{src}" alt="{escape(cap)}" style="width:100%;max-width:850px;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,0.08);border:1px solid var(--line)"><figcaption style="font-size:12px;color:#607a93;margin-top:8px">{escape(cap)}</figcaption></figure>')
+        continue
     h=re.match(r'^(#{1,3}) (.+)',line)
     if h:
         flush();close_list();level=len(h[1]);title=h[2];anchor='section-'+str(len(toc)+1) if level==2 else ''
